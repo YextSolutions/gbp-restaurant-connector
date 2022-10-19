@@ -9,8 +9,8 @@
         "source": "gbp",
         "operation": "fetchLocations",
         "inputs": {
-          "googleLinkedAccount": "google.danaYextAccount",
-          "locationGroup": "103546611736683147190"
+          "googleLinkedAccount": "${{linkedAccountId}}",
+          "locationGroup": "${{locationGroupId}}"
         }
       }
     },
