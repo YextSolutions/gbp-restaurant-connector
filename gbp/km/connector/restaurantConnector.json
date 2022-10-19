@@ -1,0 +1,6801 @@
+{
+  "$id": "gbp_restaurantConnector",
+  "$schema": "https://schema.yext.com/config/km/connector/v3",
+  "displayName": "GBP Restaurant Connector",
+  "entityType": "restaurant",
+  "source": {
+    "sourceConfig": {
+      "nativeSourceConfig": {
+        "source": "gbp",
+        "operation": "fetchLocations",
+        "inputs": {
+          "googleLinkedAccount": "google.danaYextAccount",
+          "locationGroup": "103546611736683147190"
+        }
+      }
+    },
+    "selectors": [
+      {
+        "type": "JSON",
+        "header": "External Listings ID",
+        "path": "name"
+      },
+      {
+        "type": "JSON",
+        "header": "Languages",
+        "path": "languageCode"
+      },
+      {
+        "type": "JSON",
+        "header": "Entity ID",
+        "path": "storeCode"
+      },
+      {
+        "type": "JSON",
+        "header": "Name",
+        "path": "title"
+      },
+      {
+        "type": "JSON",
+        "header": "Phone Extension",
+        "path": "storefrontAddress.regionCode"
+      },
+      {
+        "type": "JSON",
+        "header": "Main Phone",
+        "path": "phoneNumbers.primaryPhone"
+      },
+      {
+        "type": "JSON",
+        "header": "Primary Category ID",
+        "path": "categories.primaryCategory.name"
+      },
+      {
+        "type": "JSON",
+        "header": "Secondary Category IDs",
+        "path": "categories.additionalCategories[].name"
+      },
+      {
+        "type": "JSON",
+        "header": "Address \u003e Country Code",
+        "path": "storefrontAddress.regionCode"
+      },
+      {
+        "type": "JSON",
+        "header": "Address \u003e Postal Code",
+        "path": "storefrontAddress.postalCode"
+      },
+      {
+        "type": "JSON",
+        "header": "Address \u003e Region",
+        "path": "storefrontAddress.administrativeArea"
+      },
+      {
+        "type": "JSON",
+        "header": "Address \u003e City",
+        "path": "storefrontAddress.locality"
+      },
+      {
+        "type": "JSON",
+        "header": "Address \u003e Sublocality",
+        "path": "storefrontAddress.sublocality"
+      },
+      {
+        "type": "JSON",
+        "header": "Address Lines",
+        "path": "storefrontAddress.addressLines"
+      },
+      {
+        "type": "JSON",
+        "header": "Website URL",
+        "path": "websiteUri"
+      },
+      {
+        "type": "JSON",
+        "header": "GBP Labels",
+        "path": "labels"
+      },
+      {
+        "type": "JSON",
+        "header": "Display Coordinate \u003e Latitude",
+        "path": "latlng.latitude"
+      },
+      {
+        "type": "JSON",
+        "header": "Display Coordinate \u003e Longitude",
+        "path": "latlng.longitude"
+      },
+      {
+        "type": "JSON",
+        "header": "Closed",
+        "path": "openInfo.status"
+      },
+      {
+        "type": "JSON",
+        "header": "Google Place ID",
+        "path": "metadata.placeId"
+      },
+      {
+        "type": "JSON",
+        "header": "Duplicate Location",
+        "path": "metadata.duplicateLocation"
+      },
+      {
+        "type": "JSON",
+        "header": "Description",
+        "path": "profile.description"
+      },
+      {
+        "type": "JSON",
+        "header": "Google Entity Relationship \u003e Place Id",
+        "path": "relationshipData.parentLocation.placeId"
+      },
+      {
+        "type": "JSON",
+        "header": "Google Entity Relationship \u003e Type",
+        "path": "relationshipData.parentLocation.relationshipType"
+      },
+      {
+        "type": "JSON",
+        "header": "Attribute Names",
+        "path": "attributes[?valueType\u003d\u003d\u0027BOOL\u0027].name"
+      },
+      {
+        "type": "JSON",
+        "header": "Attribute Values",
+        "path": "attributes[?valueType\u003d\u003d\u0027BOOL\u0027].values"
+      },
+      {
+        "type": "JSON",
+        "header": "Landing Page URL",
+        "path": "mediaItems.attribution.profileUrl"
+      },
+      {
+        "type": "JSON",
+        "header": "Logo",
+        "path": "media[]"
+      },
+      {
+        "type": "JSON",
+        "header": "Logo Description",
+        "path": "media[]"
+      },
+      {
+        "type": "JSON",
+        "header": "Cover Photo",
+        "path": "media[]"
+      },
+      {
+        "type": "JSON",
+        "header": "Cover Photo Description",
+        "path": "media[]"
+      },
+      {
+        "type": "JSON",
+        "header": "Photo Gallery",
+        "path": "media[]"
+      },
+      {
+        "type": "JSON",
+        "header": "Photo Description",
+        "path": "media[]"
+      },
+      {
+        "type": "JSON",
+        "header": "Videos",
+        "path": "media[?mediaFormat\u003d\u003d\u0027VIDEO\u0027].sourceUrl"
+      },
+      {
+        "type": "JSON",
+        "header": "Video Description",
+        "path": "media[?mediaFormat\u003d\u003d\u0027VIDEO\u0027].sourceUrl"
+      },
+      {
+        "type": "JSON",
+        "header": "Monday Open Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Monday Close Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Tuesday Open Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Tuesday Close Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Wednesday Open Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Wednesday Close Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Thursday Open Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Thursday Close Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Friday Open Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Friday Close Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Saturday Open Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Saturday Close Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Sunday Open Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Sunday Close Time",
+        "path": "regularHours.periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Monday IsClosed",
+        "path": "regularHours.periods[].openDay"
+      },
+      {
+        "type": "JSON",
+        "header": "Tuesday IsClosed",
+        "path": "regularHours.periods[].openDay"
+      },
+      {
+        "type": "JSON",
+        "header": "Wednesday IsClosed",
+        "path": "regularHours.periods[].openDay"
+      },
+      {
+        "type": "JSON",
+        "header": "Thursday IsClosed",
+        "path": "regularHours.periods[].openDay"
+      },
+      {
+        "type": "JSON",
+        "header": "Friday IsClosed",
+        "path": "regularHours.periods[].openDay"
+      },
+      {
+        "type": "JSON",
+        "header": "Saturday IsClosed",
+        "path": "regularHours.periods[].openDay"
+      },
+      {
+        "type": "JSON",
+        "header": "Sunday IsClosed",
+        "path": "regularHours.periods[].openDay"
+      },
+      {
+        "type": "JSON",
+        "header": "Special Hours Start Date",
+        "path": "specialHours"
+      },
+      {
+        "type": "JSON",
+        "header": "Special Hours Open Time",
+        "path": "specialHours"
+      },
+      {
+        "type": "JSON",
+        "header": "Special Hours Close Time",
+        "path": "specialHours"
+      },
+      {
+        "type": "JSON",
+        "header": "Special Hours IsClosed",
+        "path": "specialHours"
+      },
+      {
+        "type": "JSON",
+        "header": "Coming Soon (Year)",
+        "path": "openInfo.openingDate.year"
+      },
+      {
+        "type": "JSON",
+        "header": "Coming Soon (Month)",
+        "path": "openInfo.openingDate.month"
+      },
+      {
+        "type": "JSON",
+        "header": "Coming Soon (Day)",
+        "path": "openInfo.openingDate.day"
+      },
+      {
+        "type": "JSON",
+        "header": "Reopening Date",
+        "path": "openInfo"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Access Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ACCESS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Breakfast Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BREAKFAST\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Brunch Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027BRUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Delivery Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DELIVERY\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Dinner Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DINNER\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Drive Through Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027DRIVE_THROUGH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hour Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hour Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hour Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hour Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hour Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hour Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Happy Hour Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027HAPPY_HOUR\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Kitchen Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027KITCHEN\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Lunch Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027LUNCH\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Online Service Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027ONLINE_SERVICE_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Pickup Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027PICKUP\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Senior Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027SENIOR_HOURS\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Monday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Monday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027MONDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Tuesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Tuesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027TUESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Wednesday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Wednesday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027WEDNESDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Thursday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Thursday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027THURSDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Friday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Friday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027FRIDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Saturday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Saturday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027SATURDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Sunday Open Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].openTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Sunday Close Time",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027].periods[?openDay\u003d\u003d\u0027SUNDAY\u0027].closeTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Monday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Tuesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Wednesday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Thursday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Friday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Saturday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Takeout Hours - Sunday Closed",
+        "path": "moreHours[?hoursTypeId\u003d\u003d\u0027TAKEOUT\u0027]"
+      },
+      {
+        "type": "JSON",
+        "header": "Restaurant Category",
+        "path": "categories.primaryCategory.name"
+      }
+    ]
+  },
+  "transforms": [
+    {
+      "mergeColumns": {
+        "inputHeaders": [
+          "Primary Category ID",
+          "Secondary Category IDs"
+        ],
+        "newColumnHeader": "Categories",
+        "delimiter": ","
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Categories",
+            "Restaurant Category"
+          ]
+        },
+        "valueToFind": {
+          "plainText": {
+            "value": "categories/",
+            "ignoreCase": false
+          }
+        },
+        "replacement": ""
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Categories"
+          ]
+        },
+        "valueToFind": {
+          "regex": ",\\Z"
+        },
+        "replacement": ""
+      }
+    },
+    {
+      "mapPublisherCategories": {
+        "inputHeaders": {
+          "headers": [
+            "Categories",
+            "Restaurant Category"
+          ]
+        },
+        "publisherId": "GOOGLEMYBUSINESS"
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "External Listings ID"
+          ]
+        },
+        "valueToFind": {
+          "plainText": {
+            "value": "locations/",
+            "ignoreCase": false
+          }
+        },
+        "replacement": ""
+      }
+    },
+    {
+      "splitColumn": {
+        "inputHeader": "Address Lines",
+        "newColumnHeaders": [
+          "Address Line 1",
+          "Address Line 2",
+          "Address Line 3"
+        ],
+        "delimiter": ","
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Attribute Names"
+          ]
+        },
+        "valueToFind": {
+          "plainText": {
+            "value": "attributes/",
+            "ignoreCase": false
+          }
+        },
+        "replacement": ""
+      }
+    },
+    {
+      "mergeColumns": {
+        "inputHeaders": [
+          "Attribute Names",
+          "Attribute Values"
+        ],
+        "newColumnHeader": "Attributes",
+        "delimiter": ","
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Attributes"
+          ]
+        },
+        "plugin": "listToObject",
+        "function": "listToObject"
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Attributes"
+          ]
+        },
+        "valueToFind": {
+          "regex": "[\"{}]"
+        },
+        "replacement": ""
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Monday Open Time",
+            "Monday Close Time",
+            "Tuesday Open Time",
+            "Tuesday Close Time",
+            "Wednesday Open Time",
+            "Wednesday Close Time",
+            "Thursday Open Time",
+            "Thursday Close Time",
+            "Friday Open Time",
+            "Friday Close Time",
+            "Saturday Open Time",
+            "Saturday Close Time",
+            "Sunday Open Time",
+            "Sunday Close Time"
+          ]
+        },
+        "plugin": "convertTime",
+        "function": "convertTime"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Monday IsClosed",
+            "Access Hours - Monday Closed",
+            "Breakfast Hours - Monday Closed",
+            "Brunch Hours - Monday Closed",
+            "Delivery Hours - Monday Closed",
+            "Dinner Hours - Monday Closed",
+            "Drive Through Hours - Monday Closed",
+            "Happy Hour Hours - Monday Closed",
+            "Kitchen Hours - Monday Closed",
+            "Lunch Hours - Monday Closed",
+            "Online Service Hours - Monday Closed",
+            "Pickup Hours - Monday Closed",
+            "Senior Hours - Monday Closed",
+            "Takeout Hours - Monday Closed"
+          ]
+        },
+        "plugin": "closedCheck",
+        "function": "mondayClosed"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Tuesday IsClosed",
+            "Access Hours - Tuesday Closed",
+            "Breakfast Hours - Tuesday Closed",
+            "Brunch Hours - Tuesday Closed",
+            "Delivery Hours - Tuesday Closed",
+            "Dinner Hours - Tuesday Closed",
+            "Drive Through Hours - Tuesday Closed",
+            "Happy Hour Hours - Tuesday Closed",
+            "Kitchen Hours - Tuesday Closed",
+            "Lunch Hours - Tuesday Closed",
+            "Online Service Hours - Tuesday Closed",
+            "Pickup Hours - Tuesday Closed",
+            "Senior Hours - Tuesday Closed",
+            "Takeout Hours - Tuesday Closed"
+          ]
+        },
+        "plugin": "closedCheck",
+        "function": "tuesdayClosed"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Wednesday IsClosed",
+            "Access Hours - Wednesday Closed",
+            "Breakfast Hours - Wednesday Closed",
+            "Brunch Hours - Wednesday Closed",
+            "Delivery Hours - Wednesday Closed",
+            "Dinner Hours - Wednesday Closed",
+            "Drive Through Hours - Wednesday Closed",
+            "Happy Hour Hours - Wednesday Closed",
+            "Kitchen Hours - Wednesday Closed",
+            "Lunch Hours - Wednesday Closed",
+            "Online Service Hours - Wednesday Closed",
+            "Pickup Hours - Wednesday Closed",
+            "Senior Hours - Wednesday Closed",
+            "Takeout Hours - Wednesday Closed"
+          ]
+        },
+        "plugin": "closedCheck",
+        "function": "wednesdayClosed"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Thursday IsClosed",
+            "Access Hours - Thursday Closed",
+            "Breakfast Hours - Thursday Closed",
+            "Brunch Hours - Thursday Closed",
+            "Delivery Hours - Thursday Closed",
+            "Dinner Hours - Thursday Closed",
+            "Drive Through Hours - Thursday Closed",
+            "Happy Hour Hours - Thursday Closed",
+            "Kitchen Hours - Thursday Closed",
+            "Lunch Hours - Thursday Closed",
+            "Online Service Hours - Thursday Closed",
+            "Pickup Hours - Thursday Closed",
+            "Senior Hours - Thursday Closed",
+            "Takeout Hours - Thursday Closed"
+          ]
+        },
+        "plugin": "closedCheck",
+        "function": "thursdayClosed"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Friday IsClosed",
+            "Access Hours - Friday Closed",
+            "Breakfast Hours - Friday Closed",
+            "Brunch Hours - Friday Closed",
+            "Delivery Hours - Friday Closed",
+            "Dinner Hours - Friday Closed",
+            "Drive Through Hours - Friday Closed",
+            "Happy Hour Hours - Friday Closed",
+            "Kitchen Hours - Friday Closed",
+            "Lunch Hours - Friday Closed",
+            "Online Service Hours - Friday Closed",
+            "Pickup Hours - Friday Closed",
+            "Senior Hours - Friday Closed",
+            "Takeout Hours - Friday Closed"
+          ]
+        },
+        "plugin": "closedCheck",
+        "function": "fridayClosed"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Saturday IsClosed",
+            "Access Hours - Saturday Closed",
+            "Breakfast Hours - Saturday Closed",
+            "Brunch Hours - Saturday Closed",
+            "Delivery Hours - Saturday Closed",
+            "Dinner Hours - Saturday Closed",
+            "Drive Through Hours - Saturday Closed",
+            "Happy Hour Hours - Saturday Closed",
+            "Kitchen Hours - Saturday Closed",
+            "Lunch Hours - Saturday Closed",
+            "Online Service Hours - Saturday Closed",
+            "Pickup Hours - Saturday Closed",
+            "Senior Hours - Saturday Closed",
+            "Takeout Hours - Saturday Closed"
+          ]
+        },
+        "plugin": "closedCheck",
+        "function": "saturdayClosed"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Sunday IsClosed",
+            "Access Hours - Sunday Closed",
+            "Breakfast Hours - Sunday Closed",
+            "Brunch Hours - Sunday Closed",
+            "Delivery Hours - Sunday Closed",
+            "Dinner Hours - Sunday Closed",
+            "Drive Through Hours - Sunday Closed",
+            "Happy Hour Hours - Sunday Closed",
+            "Kitchen Hours - Sunday Closed",
+            "Lunch Hours - Sunday Closed",
+            "Online Service Hours - Sunday Closed",
+            "Pickup Hours - Sunday Closed",
+            "Senior Hours - Sunday Closed",
+            "Takeout Hours - Sunday Closed"
+          ]
+        },
+        "plugin": "closedCheck",
+        "function": "sundayClosed"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Coming Soon (Month)",
+            "Coming Soon (Day)"
+          ]
+        },
+        "plugin": "addZero",
+        "function": "addZero"
+      }
+    },
+    {
+      "mergeColumns": {
+        "inputHeaders": [
+          "Coming Soon (Year)",
+          "Coming Soon (Month)",
+          "Coming Soon (Day)"
+        ],
+        "newColumnHeader": "Coming Soon",
+        "delimiter": "-"
+      }
+    },
+    {
+      "removeUnwantedChars": {
+        "inputHeaders": {
+          "headers": [
+            "Main Phone"
+          ]
+        },
+        "cleanOptions": [
+          "REMOVE_NON_NUMERICS"
+        ]
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Reopening Date"
+          ]
+        },
+        "plugin": "temporarilyClosed",
+        "function": "temporarilyClosed"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Phone Extension"
+          ]
+        },
+        "plugin": "countryCodeToPhoneExtension",
+        "function": "countryCodeToPhoneExtension"
+      }
+    },
+    {
+      "mergeColumns": {
+        "inputHeaders": [
+          "Phone Extension",
+          "Main Phone"
+        ],
+        "newColumnHeader": "Main Phone Number",
+        "delimiter": ""
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Main Phone Number"
+          ]
+        },
+        "valueToFind": {
+          "regex": "^(.{1,5})$"
+        },
+        "replacement": ""
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Coming Soon"
+          ]
+        },
+        "valueToFind": {
+          "plainText": {
+            "value": "--",
+            "ignoreCase": false
+          }
+        },
+        "replacement": ""
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Access Hours - Monday Open Time",
+            "Access Hours - Monday Close Time",
+            "Access Hours - Tuesday Open Time",
+            "Access Hours - Tuesday Close Time",
+            "Access Hours - Wednesday Open Time",
+            "Access Hours - Wednesday Close Time",
+            "Access Hours - Thursday Open Time",
+            "Access Hours - Thursday Close Time",
+            "Access Hours - Friday Open Time",
+            "Access Hours - Friday Close Time",
+            "Access Hours - Saturday Open Time",
+            "Access Hours - Saturday Close Time",
+            "Access Hours - Sunday Open Time",
+            "Access Hours - Sunday Close Time",
+            "Breakfast Hours - Monday Open Time",
+            "Breakfast Hours - Monday Close Time",
+            "Breakfast Hours - Tuesday Open Time",
+            "Breakfast Hours - Tuesday Close Time",
+            "Breakfast Hours - Wednesday Open Time",
+            "Breakfast Hours - Wednesday Close Time",
+            "Breakfast Hours - Thursday Open Time",
+            "Breakfast Hours - Thursday Close Time",
+            "Breakfast Hours - Friday Open Time",
+            "Breakfast Hours - Friday Close Time",
+            "Breakfast Hours - Saturday Open Time",
+            "Breakfast Hours - Saturday Close Time",
+            "Breakfast Hours - Sunday Open Time",
+            "Breakfast Hours - Sunday Close Time",
+            "Brunch Hours - Monday Open Time",
+            "Brunch Hours - Monday Close Time",
+            "Brunch Hours - Tuesday Open Time",
+            "Brunch Hours - Tuesday Close Time",
+            "Brunch Hours - Wednesday Open Time",
+            "Brunch Hours - Wednesday Close Time",
+            "Brunch Hours - Thursday Open Time",
+            "Brunch Hours - Thursday Close Time",
+            "Brunch Hours - Friday Open Time",
+            "Brunch Hours - Friday Close Time",
+            "Brunch Hours - Saturday Open Time",
+            "Brunch Hours - Saturday Close Time",
+            "Brunch Hours - Sunday Open Time",
+            "Brunch Hours - Sunday Close Time",
+            "Delivery Hours - Monday Open Time",
+            "Delivery Hours - Monday Close Time",
+            "Delivery Hours - Tuesday Open Time",
+            "Delivery Hours - Tuesday Close Time",
+            "Delivery Hours - Wednesday Open Time",
+            "Delivery Hours - Wednesday Close Time",
+            "Delivery Hours - Thursday Open Time",
+            "Delivery Hours - Thursday Close Time",
+            "Delivery Hours - Friday Open Time",
+            "Delivery Hours - Friday Close Time",
+            "Delivery Hours - Saturday Open Time",
+            "Delivery Hours - Saturday Close Time",
+            "Delivery Hours - Sunday Open Time",
+            "Delivery Hours - Sunday Close Time",
+            "Dinner Hours - Monday Open Time",
+            "Dinner Hours - Monday Close Time",
+            "Dinner Hours - Tuesday Open Time",
+            "Dinner Hours - Tuesday Close Time",
+            "Dinner Hours - Wednesday Open Time",
+            "Dinner Hours - Wednesday Close Time",
+            "Dinner Hours - Thursday Open Time",
+            "Dinner Hours - Thursday Close Time",
+            "Dinner Hours - Friday Open Time",
+            "Dinner Hours - Friday Close Time",
+            "Dinner Hours - Saturday Open Time",
+            "Dinner Hours - Saturday Close Time",
+            "Dinner Hours - Sunday Open Time",
+            "Dinner Hours - Sunday Close Time",
+            "Drive Through Hours - Monday Open Time",
+            "Drive Through Hours - Monday Close Time",
+            "Drive Through Hours - Tuesday Open Time",
+            "Drive Through Hours - Tuesday Close Time",
+            "Drive Through Hours - Wednesday Open Time",
+            "Drive Through Hours - Wednesday Close Time",
+            "Drive Through Hours - Thursday Open Time",
+            "Drive Through Hours - Thursday Close Time",
+            "Drive Through Hours - Friday Open Time",
+            "Drive Through Hours - Friday Close Time",
+            "Drive Through Hours - Saturday Open Time",
+            "Drive Through Hours - Saturday Close Time",
+            "Drive Through Hours - Sunday Open Time",
+            "Drive Through Hours - Sunday Close Time",
+            "Happy Hours - Monday Open Time",
+            "Happy Hours - Monday Close Time",
+            "Happy Hours - Tuesday Open Time",
+            "Happy Hours - Tuesday Close Time",
+            "Happy Hours - Wednesday Open Time",
+            "Happy Hours - Wednesday Close Time",
+            "Happy Hours - Thursday Open Time",
+            "Happy Hours - Thursday Close Time",
+            "Happy Hours - Friday Open Time",
+            "Happy Hours - Friday Close Time",
+            "Happy Hours - Saturday Open Time",
+            "Happy Hours - Saturday Close Time",
+            "Happy Hours - Sunday Open Time",
+            "Happy Hours - Sunday Close Time",
+            "Kitchen Hours - Monday Open Time",
+            "Kitchen Hours - Monday Close Time",
+            "Kitchen Hours - Tuesday Open Time",
+            "Kitchen Hours - Tuesday Close Time",
+            "Kitchen Hours - Wednesday Open Time",
+            "Kitchen Hours - Wednesday Close Time",
+            "Kitchen Hours - Thursday Open Time",
+            "Kitchen Hours - Thursday Close Time",
+            "Kitchen Hours - Friday Open Time",
+            "Kitchen Hours - Friday Close Time",
+            "Kitchen Hours - Saturday Open Time",
+            "Kitchen Hours - Saturday Close Time",
+            "Kitchen Hours - Sunday Open Time",
+            "Kitchen Hours - Sunday Close Time",
+            "Lunch Hours - Monday Open Time",
+            "Lunch Hours - Monday Close Time",
+            "Lunch Hours - Tuesday Open Time",
+            "Lunch Hours - Tuesday Close Time",
+            "Lunch Hours - Wednesday Open Time",
+            "Lunch Hours - Wednesday Close Time",
+            "Lunch Hours - Thursday Open Time",
+            "Lunch Hours - Thursday Close Time",
+            "Lunch Hours - Friday Open Time",
+            "Lunch Hours - Friday Close Time",
+            "Lunch Hours - Saturday Open Time",
+            "Lunch Hours - Saturday Close Time",
+            "Lunch Hours - Sunday Open Time",
+            "Lunch Hours - Sunday Close Time",
+            "Online Service Hours - Monday Open Time",
+            "Online Service Hours - Monday Close Time",
+            "Online Service Hours - Tuesday Open Time",
+            "Online Service Hours - Tuesday Close Time",
+            "Online Service Hours - Wednesday Open Time",
+            "Online Service Hours - Wednesday Close Time",
+            "Online Service Hours - Thursday Open Time",
+            "Online Service Hours - Thursday Close Time",
+            "Online Service Hours - Friday Open Time",
+            "Online Service Hours - Friday Close Time",
+            "Online Service Hours - Saturday Open Time",
+            "Online Service Hours - Saturday Close Time",
+            "Online Service Hours - Sunday Open Time",
+            "Online Service Hours - Sunday Close Time",
+            "Pickup Hours - Monday Open Time",
+            "Pickup Hours - Monday Close Time",
+            "Pickup Hours - Tuesday Open Time",
+            "Pickup Hours - Tuesday Close Time",
+            "Pickup Hours - Wednesday Open Time",
+            "Pickup Hours - Wednesday Close Time",
+            "Pickup Hours - Thursday Open Time",
+            "Pickup Hours - Thursday Close Time",
+            "Pickup Hours - Friday Open Time",
+            "Pickup Hours - Friday Close Time",
+            "Pickup Hours - Saturday Open Time",
+            "Pickup Hours - Saturday Close Time",
+            "Pickup Hours - Sunday Open Time",
+            "Pickup Hours - Sunday Close Time",
+            "Senior Hours - Monday Open Time",
+            "Senior Hours - Monday Close Time",
+            "Senior Hours - Tuesday Open Time",
+            "Senior Hours - Tuesday Close Time",
+            "Senior Hours - Wednesday Open Time",
+            "Senior Hours - Wednesday Close Time",
+            "Senior Hours - Thursday Open Time",
+            "Senior Hours - Thursday Close Time",
+            "Senior Hours - Friday Open Time",
+            "Senior Hours - Friday Close Time",
+            "Senior Hours - Saturday Open Time",
+            "Senior Hours - Saturday Close Time",
+            "Senior Hours - Sunday Open Time",
+            "Senior Hours - Sunday Close Time",
+            "Takeout Hours - Monday Open Time",
+            "Takeout Hours - Monday Close Time",
+            "Takeout Hours - Tuesday Open Time",
+            "Takeout Hours - Tuesday Close Time",
+            "Takeout Hours - Wednesday Open Time",
+            "Takeout Hours - Wednesday Close Time",
+            "Takeout Hours - Thursday Open Time",
+            "Takeout Hours - Thursday Close Time",
+            "Takeout Hours - Friday Open Time",
+            "Takeout Hours - Friday Close Time",
+            "Takeout Hours - Saturday Open Time",
+            "Takeout Hours - Saturday Close Time",
+            "Takeout Hours - Sunday Open Time",
+            "Takeout Hours - Sunday Close Time"
+          ]
+        },
+        "plugin": "convertAdditionalHours",
+        "function": "convertAdditionalHours"
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Languages"
+          ]
+        },
+        "valueToFind": {
+          "plainText": {
+            "value": "-",
+            "ignoreCase": false
+          }
+        },
+        "replacement": "_"
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Closed"
+          ]
+        },
+        "valueToFind": {
+          "plainText": {
+            "value": "OPEN",
+            "ignoreCase": false
+          }
+        },
+        "replacement": "FALSE"
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Closed"
+          ]
+        },
+        "valueToFind": {
+          "plainText": {
+            "value": "CLOSED_TEMPORARILY",
+            "ignoreCase": false
+          }
+        },
+        "replacement": "TRUE"
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Closed"
+          ]
+        },
+        "valueToFind": {
+          "plainText": {
+            "value": "CLOSED_PERMANENTLY",
+            "ignoreCase": false
+          }
+        },
+        "replacement": "TRUE"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Special Hours Start Date"
+          ]
+        },
+        "plugin": "handleHolidayHours",
+        "function": "specialHoursStartDate"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Special Hours Open Time"
+          ]
+        },
+        "plugin": "handleHolidayHours",
+        "function": "specialHoursOpenIntervalStart"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Special Hours Close Time"
+          ]
+        },
+        "plugin": "handleHolidayHours",
+        "function": "specialHoursOpenIntervalClose"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Special Hours IsClosed"
+          ]
+        },
+        "plugin": "handleHolidayHours",
+        "function": "specialHoursIsClosed"
+      }
+    },
+    {
+      "splitColumn": {
+        "inputHeader": "Special Hours Start Date",
+        "newColumnHeaders": [
+          "HolidayHoursStartDate[0]",
+          "HolidayHoursStartDate[1]",
+          "HolidayHoursStartDate[2]",
+          "HolidayHoursStartDate[3]",
+          "HolidayHoursStartDate[4]",
+          "HolidayHoursStartDate[5]",
+          "HolidayHoursStartDate[6]",
+          "HolidayHoursStartDate[7]",
+          "HolidayHoursStartDate[8]",
+          "HolidayHoursStartDate[9]"
+        ],
+        "delimiter": ","
+      }
+    },
+    {
+      "splitColumn": {
+        "inputHeader": "Special Hours Open Time",
+        "newColumnHeaders": [
+          "SpecialHoursOpenTime[0]",
+          "SpecialHoursOpenTime[1]",
+          "SpecialHoursOpenTime[2]",
+          "SpecialHoursOpenTime[3]",
+          "SpecialHoursOpenTime[4]",
+          "SpecialHoursOpenTime[5]",
+          "SpecialHoursOpenTime[6]",
+          "SpecialHoursOpenTime[7]",
+          "SpecialHoursOpenTime[8]",
+          "SpecialHoursOpenTime[9]"
+        ],
+        "delimiter": ","
+      }
+    },
+    {
+      "splitColumn": {
+        "inputHeader": "Special Hours Close Time",
+        "newColumnHeaders": [
+          "SpecialHoursCloseTime[0]",
+          "SpecialHoursCloseTime[1]",
+          "SpecialHoursCloseTime[2]",
+          "SpecialHoursCloseTime[3]",
+          "SpecialHoursCloseTime[4]",
+          "SpecialHoursCloseTime[5]",
+          "SpecialHoursCloseTime[6]",
+          "SpecialHoursCloseTime[7]",
+          "SpecialHoursCloseTime[8]",
+          "SpecialHoursCloseTime[9]"
+        ],
+        "delimiter": ","
+      }
+    },
+    {
+      "splitColumn": {
+        "inputHeader": "Special Hours IsClosed",
+        "newColumnHeaders": [
+          "SpecialHoursIsClosed[0]",
+          "SpecialHoursIsClosed[1]",
+          "SpecialHoursIsClosed[2]",
+          "SpecialHoursIsClosed[3]",
+          "SpecialHoursIsClosed[4]",
+          "SpecialHoursIsClosed[5]",
+          "SpecialHoursIsClosed[6]",
+          "SpecialHoursIsClosed[7]",
+          "SpecialHoursIsClosed[8]",
+          "SpecialHoursIsClosed[9]"
+        ],
+        "delimiter": ","
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Logo"
+          ]
+        },
+        "plugin": "convertGooglePhotos",
+        "function": "logoPhotoList"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Logo Description"
+          ]
+        },
+        "plugin": "convertGooglePhotos",
+        "function": "logoPhotoDescription"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Cover Photo"
+          ]
+        },
+        "plugin": "convertGooglePhotos",
+        "function": "coverPhotoList"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Cover Photo Description"
+          ]
+        },
+        "plugin": "convertGooglePhotos",
+        "function": "coverPhotoDescription"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Photo Gallery"
+          ]
+        },
+        "plugin": "convertGooglePhotos",
+        "function": "photoList"
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Photo Description"
+          ]
+        },
+        "plugin": "convertGooglePhotos",
+        "function": "photoDescription"
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Logo",
+            "Cover Photo",
+            "Photo Gallery"
+          ]
+        },
+        "valueToFind": {
+          "plainText": {
+            "value": "\"",
+            "ignoreCase": false
+          }
+        },
+        "replacement": ""
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Attributes"
+          ]
+        },
+        "valueToFind": {
+          "plainText": {
+            "value": "accepts_new_patients:true,",
+            "ignoreCase": false
+          }
+        },
+        "replacement": ""
+      }
+    },
+    {
+      "findAndReplace": {
+        "inputHeaders": {
+          "headers": [
+            "Attributes"
+          ]
+        },
+        "valueToFind": {
+          "plainText": {
+            "value": "accepts_new_patients:false,",
+            "ignoreCase": false
+          }
+        },
+        "replacement": ""
+      }
+    },
+    {
+      "function": {
+        "inputHeaders": {
+          "headers": [
+            "Restaurant Category"
+          ]
+        },
+        "plugin": "filterCategories",
+        "function": "restaurantCategoryFilter"
+      }
+    },
+    {
+      "filterRows": {
+        "action": "KEEP",
+        "combinator": "AND",
+        "rules": [
+          {
+            "columnHeader": "Restaurant Category",
+            "conditional": "EQUALS",
+            "conditionalInput": "true"
+          }
+        ]
+      }
+    }
+  ],
+  "mappings": [
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Thursday Closed",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Monday Close Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursIsClosed[8]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 8
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursCloseTime[8]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 8
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Thursday Closed",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "localeCode",
+      "header": "Languages",
+      "subfieldPath": []
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Thursday Closed",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Wednesday Closed",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Monday Close Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Friday Open Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Saturday Closed",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Saturday Close Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursOpenTime[1]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 1
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Wednesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Sunday Open Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Wednesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursCloseTime[9]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 9
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursIsClosed[7]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 7
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "categories",
+      "header": "Categories",
+      "subfieldPath": []
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Sunday Close Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "videos",
+      "header": "Video Description",
+      "subfieldPath": [
+        {
+          "name": "description"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Saturday Open Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Wednesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Friday Close Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Monday Open Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Saturday Open Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "googlePlaceId",
+      "header": "Google Place ID",
+      "subfieldPath": []
+    },
+    {
+      "field": "address",
+      "header": "Address \u003e Postal Code",
+      "subfieldPath": [
+        {
+          "name": "postalCode"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Tuesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Wednesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Friday IsClosed",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Monday Open Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursOpenTime[0]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 0
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Wednesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Sunday Close Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Sunday Closed",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursIsClosed[6]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 6
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursCloseTime[6]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 6
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Reopening Date",
+      "subfieldPath": [
+        {
+          "name": "reopenDate"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Monday Closed",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Sunday Open Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Monday Closed",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "photoGallery",
+      "header": "Photo Description",
+      "subfieldPath": [
+        {
+          "name": "description"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Saturday IsClosed",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Wednesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "googleProfilePhoto",
+      "header": "Logo Description",
+      "subfieldPath": [
+        {
+          "name": "alternateText"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Tuesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Monday Open Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Wednesday Closed",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "HolidayHoursStartDate[0]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 0
+        },
+        {
+          "name": "date"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Friday Close Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Wednesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Saturday Closed",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Wednesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursCloseTime[7]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 7
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursIsClosed[5]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 5
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Thursday Close Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Thursday Close Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Wednesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Sunday Closed",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Sunday Open Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "googleEntityRelationship",
+      "header": "Google Entity Relationship \u003e Type",
+      "subfieldPath": [
+        {
+          "name": "type"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Tuesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Saturday Close Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursCloseTime[4]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 4
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Monday Closed",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Wednesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Wednesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Monday Closed",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "googleCoverPhoto",
+      "header": "Cover Photo",
+      "subfieldPath": [
+        {
+          "name": "url"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursIsClosed[4]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 4
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Sunday Close Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "HolidayHoursStartDate[9]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 9
+        },
+        {
+          "name": "date"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Saturday Open Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "name",
+      "header": "Name",
+      "subfieldPath": []
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Friday Closed",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Tuesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursOpenTime[5]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 5
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Tuesday Closed",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Sunday Close Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Friday Closed",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursCloseTime[5]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 5
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Monday IsClosed",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Wednesday Closed",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Monday Close Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Wednesday IsClosed",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Thursday Closed",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Thursday Close Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Friday Close Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursIsClosed[3]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 3
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Tuesday Closed",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Thursday Open Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursOpenTime[4]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 4
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "displayCoordinate",
+      "header": "Display Coordinate \u003e Longitude",
+      "subfieldPath": [
+        {
+          "name": "longitude"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Friday Close Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Tuesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Monday Close Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Sunday IsClosed",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Friday Open Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Saturday Close Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Thursday Open Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Saturday Closed",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Monday Closed",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Thursday Open Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Saturday Close Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Sunday Closed",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Wednesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursCloseTime[2]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 2
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Tuesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Saturday Close Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hour Hours - Thursday Closed",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hour Hours - Saturday Closed",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Friday Open Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursIsClosed[2]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 2
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Friday Closed",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Thursday Closed",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Monday Open Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Monday Close Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Tuesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Tuesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Friday Closed",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Saturday Closed",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Thursday Close Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "address",
+      "header": "Address \u003e Sublocality",
+      "subfieldPath": [
+        {
+          "name": "sublocality"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Monday Open Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursOpenTime[3]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 3
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Monday Closed",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Saturday Close Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Sunday Open Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Tuesday Closed",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Friday Closed",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Monday Close Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Tuesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursCloseTime[3]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 3
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Monday Closed",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Wednesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Wednesday Closed",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Saturday Open Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Thursday IsClosed",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Thursday Open Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Thursday Close Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Monday Closed",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Saturday Open Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursIsClosed[1]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 1
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Sunday Open Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Tuesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Wednesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Wednesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Tuesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursOpenTime[2]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 2
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Monday Close Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Friday Open Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "address",
+      "header": "Address Line 1",
+      "subfieldPath": [
+        {
+          "name": "line1"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Monday Open Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "address",
+      "header": "Address Line 2",
+      "subfieldPath": [
+        {
+          "name": "line2"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Thursday Open Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hour Hours - Sunday Closed",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "address",
+      "header": "Address Line 3",
+      "subfieldPath": [
+        {
+          "name": "line3"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Monday Open Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Tuesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Saturday Open Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hour Hours - Friday Closed",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hour Hours - Wednesday Closed",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "HolidayHoursStartDate[5]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 5
+        },
+        {
+          "name": "date"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Tuesday IsClosed",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Sunday Open Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Sunday Close Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Wednesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Tuesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursIsClosed[0]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 0
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Monday Open Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursCloseTime[0]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 0
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Thursday Close Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Saturday Close Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Saturday Close Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Thursday Open Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Tuesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursOpenTime[9]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 9
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "address",
+      "header": "Address \u003e Region",
+      "subfieldPath": [
+        {
+          "name": "region"
+        }
+      ]
+    },
+    {
+      "field": "entityId",
+      "header": "Entity ID",
+      "subfieldPath": []
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Saturday Open Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Sunday Close Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "websiteUrl",
+      "header": "Website URL",
+      "subfieldPath": [
+        {
+          "name": "displayUrl"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Monday Close Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Saturday Closed",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Saturday Closed",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "HolidayHoursStartDate[6]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 6
+        },
+        {
+          "name": "date"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Friday Close Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Sunday Open Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Wednesday Closed",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursCloseTime[1]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 1
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Friday Closed",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Saturday Open Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursOpenTime[8]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 8
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Monday Open Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Friday Closed",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Friday Close Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Sunday Open Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "displayCoordinate",
+      "header": "Display Coordinate \u003e Latitude",
+      "subfieldPath": [
+        {
+          "name": "latitude"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Tuesday Closed",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "landingPageUrl",
+      "header": "Landing Page URL",
+      "subfieldPath": []
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Saturday Close Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "description",
+      "header": "Description",
+      "subfieldPath": []
+    },
+    {
+      "field": "hours",
+      "header": "HolidayHoursStartDate[7]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 7
+        },
+        {
+          "name": "date"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Thursday Open Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Saturday Open Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Tuesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Thursday Open Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursOpenTime[7]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 7
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Friday Close Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Tuesday Closed",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Sunday Closed",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Wednesday Closed",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Wednesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Sunday Open Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Wednesday Closed",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Sunday Closed",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Thursday Closed",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Tuesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "HolidayHoursStartDate[8]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 8
+        },
+        {
+          "name": "date"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Thursday Close Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Thursday Open Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Tuesday Closed",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Monday Open Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Sunday Closed",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "mainPhone",
+      "header": "Main Phone Number",
+      "subfieldPath": []
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursOpenTime[6]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 6
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Tuesday Closed",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Wednesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hour Hours - Monday Closed",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Tuesday Closed",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Monday Close Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Tuesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Thursday Open Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "HolidayHoursStartDate[1]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 1
+        },
+        {
+          "name": "date"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Sunday Closed",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Tuesday Closed",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Wednesday Closed",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "brunchHours",
+      "header": "Brunch Hours - Friday Closed",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Wednesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Friday Open Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "googleAttributes",
+      "header": "Attributes",
+      "subfieldPath": []
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Sunday Close Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Saturday Closed",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Thursday Close Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "googleCoverPhoto",
+      "header": "Cover Photo Description",
+      "subfieldPath": [
+        {
+          "name": "alternateText"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Saturday Closed",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Thursday Close Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Sunday Open Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Friday Open Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Sunday Closed",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Sunday Close Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Sunday Close Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Tuesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Thursday Closed",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "googleMyBusinessLabels",
+      "header": "GBP Labels",
+      "subfieldPath": []
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Sunday Close Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Friday Close Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Friday Open Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Tuesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Monday Close Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "HolidayHoursStartDate[2]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 2
+        },
+        {
+          "name": "date"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Monday Close Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Thursday Closed",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Tuesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "countryCode",
+      "header": "Address \u003e Country Code",
+      "subfieldPath": []
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Friday Open Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Friday Open Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Saturday Close Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hours - Tuesday Open Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Saturday Open Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Thursday Open Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "googleAccountId",
+      "header": "External Listings ID",
+      "subfieldPath": []
+    },
+    {
+      "field": "photoGallery",
+      "header": "Photo Gallery",
+      "subfieldPath": [
+        {
+          "name": "image"
+        },
+        {
+          "name": "url"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "HolidayHoursStartDate[3]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 3
+        },
+        {
+          "name": "date"
+        }
+      ]
+    },
+    {
+      "field": "driveThroughHours",
+      "header": "Drive Through Hours - Friday Close Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "onlineServiceHours",
+      "header": "Online Service Hours - Thursday Close Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Sunday Closed",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "googleEntityRelationship",
+      "header": "Google Entity Relationship \u003e Place Id",
+      "subfieldPath": [
+        {
+          "name": "placeId"
+        }
+      ]
+    },
+    {
+      "field": "videos",
+      "header": "Videos",
+      "subfieldPath": [
+        {
+          "name": "video"
+        },
+        {
+          "name": "url"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Wednesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Friday Close Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Saturday Closed",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Thursday Closed",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Tuesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Friday Close Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "seniorHours",
+      "header": "Senior Hours - Thursday Close Time",
+      "subfieldPath": [
+        {
+          "name": "thursday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Friday Closed",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Wednesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "happyHours",
+      "header": "Happy Hour Hours - Tuesday Closed",
+      "subfieldPath": [
+        {
+          "name": "tuesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "SpecialHoursIsClosed[9]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 9
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "pickupHours",
+      "header": "Pickup Hours - Wednesday Close Time",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "HolidayHoursStartDate[4]",
+      "subfieldPath": [
+        {
+          "name": "holidayHours"
+        },
+        {
+          "index": 4
+        },
+        {
+          "name": "date"
+        }
+      ]
+    },
+    {
+      "field": "address",
+      "header": "Address \u003e City",
+      "subfieldPath": [
+        {
+          "name": "city"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Friday Open Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Sunday Open Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Sunday Close Time",
+      "subfieldPath": [
+        {
+          "name": "sunday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "googleProfilePhoto",
+      "header": "Logo",
+      "subfieldPath": [
+        {
+          "name": "url"
+        }
+      ]
+    },
+    {
+      "field": "kitchenHours",
+      "header": "Kitchen Hours - Monday Closed",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    },
+    {
+      "field": "hours",
+      "header": "Saturday Open Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "closed",
+      "header": "Closed",
+      "subfieldPath": []
+    },
+    {
+      "field": "gbp_openDate",
+      "header": "Coming Soon",
+      "subfieldPath": []
+    },
+    {
+      "field": "accessHours",
+      "header": "Access Hours - Monday Open Time",
+      "subfieldPath": [
+        {
+          "name": "monday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "deliveryHours",
+      "header": "Delivery Hours - Saturday Close Time",
+      "subfieldPath": [
+        {
+          "name": "saturday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Friday Open Time",
+      "subfieldPath": [
+        {
+          "name": "friday"
+        },
+        {
+          "name": "openIntervals"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "field": "takeoutHours",
+      "header": "Takeout Hours - Wednesday Closed",
+      "subfieldPath": [
+        {
+          "name": "wednesday"
+        },
+        {
+          "name": "isClosed"
+        }
+      ]
+    }
+  ]
+}
