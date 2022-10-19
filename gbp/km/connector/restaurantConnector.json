@@ -6736,11 +6736,6 @@
         "subfieldPath": []
       },
       {
-        "field": "gbpRestaurant_openDate",
-        "header": "Coming Soon",
-        "subfieldPath": []
-      },
-      {
         "field": "accessHours",
         "header": "Access Hours - Monday Open Time",
         "subfieldPath": [
