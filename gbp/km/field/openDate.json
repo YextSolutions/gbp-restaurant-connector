@@ -1,5 +1,5 @@
 {
-  "$id": "gbp_openDate",
+  "$id": "gbpRestaurant_openDate",
   "$schema": "https://schema.yext.com/config/km/field/v1",
   "displayName": "Open Date",
   "group": "NONE",
