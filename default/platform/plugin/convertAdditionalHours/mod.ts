@@ -15,6 +15,10 @@ export function convertAdditionalHours(code) {
         for (let i = 0; i < periods.length; i++) {
         if (periods[i].search('minutes') > -1) {
             var subPeriods = periods[i].split(',')
+            if (typeof subPeriods[0] === 'undefined' || typeof subPeriods[1] === 'undefined') {
+                outputArray.push("")
+            }
+            else {
             var hour = subPeriods[0].replace(/[^0-9]/g, '')
             var minutes = subPeriods[1].replace(/[^0-9]/g, '')
             if (hour.length < 2) {
@@ -24,9 +28,13 @@ export function convertAdditionalHours(code) {
                 minutes = "0" + minutes
             }
             outputArray.push(hour + ":" + minutes)
-
+            }
         }
         else {
+            if (typeof periods[i] === 'undefined') {
+                outputArray.push("")
+            }
+            else {
             var hour = periods[i].replace(/[^0-9]/g, '')
             if (hour.length < 2) {
                 hour = "0" + hour + ":00"
@@ -35,6 +43,7 @@ export function convertAdditionalHours(code) {
             else {
                 hour = hour + ':00'
                 outputArray.push(hour)
+            }
             }
         }
     }
